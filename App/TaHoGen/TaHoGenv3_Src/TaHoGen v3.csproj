@@ -107,11 +107,11 @@
     </Reference>
     <Reference Include="Interop.CodeSmithParser">
       <Name>Interop.CodeSmithParser</Name>
-      <HintPath>..\Bin\Interop.CodeSmithParser.dll</HintPath>
+      <HintPath>..\..\..\Libs\Interop.CodeSmithParser.dll</HintPath>
     </Reference>
     <Reference Include="Interop.RegionParser">
       <Name>Interop.RegionParser</Name>
-      <HintPath>..\Bin\Interop.RegionParser.dll</HintPath>
+      <HintPath>..\..\..\Libs\Interop.RegionParser.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.JScript">
       <Name>Microsoft.JScript</Name>
@@ -119,6 +119,7 @@
     <Reference Include="System">
       <Name>System</Name>
     </Reference>
+    <Reference Include="System.Activities" />
     <Reference Include="System.Data">
       <Name>System.Data</Name>
     </Reference>
