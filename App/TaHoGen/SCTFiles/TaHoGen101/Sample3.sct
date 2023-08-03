@@ -1,0 +1,11 @@
+<%@ CodeTemplate ClassName="PropertyGenerator" Namespace="MyTemplateNamespace" Language="C#" TargetLanguage="C#"%>
+<%@ Property Name="Name" Type="System.String" Category="Options" %>
+<%@ Property Name="Type" Type="System.String" Category="Options" %>
+<%@ Property Name="ReadOnly" Type="System.Boolean" Default="true" Category="Options" %>
+
+public <%=Type%> <%=Name%>
+	{
+		get { return <%=Name.Substring(0, 1).ToLower() + Name.Substring(1)%>; }<%if (!ReadOnly) {%>
+		set { <%=Name.Substring(0, 1).ToLower() + Name.Substring(1)%> = value; }<%}%>
+	}
+		

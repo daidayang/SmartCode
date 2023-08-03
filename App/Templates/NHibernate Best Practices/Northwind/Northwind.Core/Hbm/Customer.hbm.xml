@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="Northwind.Core" namespace="Northwind.Core.Domain">
+    <class name="Customer" table="Customers" >
+    <id name="ID" type="System.String" column="CustomerID">
+        <generator class="assigned"/>
+    </id>
+    <property name="CompanyName" column="CompanyName" type="System.String" not-null="true" length="40"/>
+    <property name="ContactName" column="ContactName" type="System.String" not-null="false" length="30"/>
+    <property name="ContactTitle" column="ContactTitle" type="System.String" not-null="false" length="30"/>
+    <property name="Address" column="Address" type="System.String" not-null="false" length="60"/>
+    <property name="City" column="City" type="System.String" not-null="false" length="15"/>
+    <property name="Region" column="Region" type="System.String" not-null="false" length="15"/>
+    <property name="PostalCode" column="PostalCode" type="System.String" not-null="false" length="10"/>
+    <property name="Country" column="Country" type="System.String" not-null="false" length="15"/>
+    <property name="Phone" column="Phone" type="System.String" not-null="false" length="24"/>
+    <property name="Fax" column="Fax" type="System.String" not-null="false" length="24"/>
+    <bag name="CustomerDemographicses" table="CustomerCustomerDemo">
+        <key column="CustomerID" />
+        <many-to-many class="CustomerDemographic" column="CustomerTypeID" />
+    </bag>
+    <bag name="Orderses" table="Orders" inverse="true" lazy="true" cascade="delete">
+    <key column="CustomerID" />
+    <one-to-many class="Order"/>
+    </bag>
+ </class>
+</hibernate-mapping>

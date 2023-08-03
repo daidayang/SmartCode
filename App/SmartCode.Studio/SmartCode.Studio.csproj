@@ -1,0 +1,727 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A4888270-91C9-412B-A753-E965E7D8F241}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SmartCode.Studio</RootNamespace>
+    <AssemblyName>SmartCode.Studio</AssemblyName>
+    <ApplicationIcon>Sc.ico</ApplicationIcon>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.9.0.0, Culture=neutral, PublicKeyToken=0e99375e54769942, processorArchitecture=MSIL">
+      <HintPath>..\packages\Portable.BouncyCastle.1.9.0\lib\net40\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Protobuf, Version=3.21.9.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Protobuf.3.21.9\lib\net45\Google.Protobuf.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Compression.LZ4, Version=1.3.5.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
+      <HintPath>..\packages\K4os.Compression.LZ4.1.3.5\lib\net462\K4os.Compression.LZ4.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Compression.LZ4.Streams, Version=1.3.5.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
+      <HintPath>..\packages\K4os.Compression.LZ4.Streams.1.3.5\lib\net462\K4os.Compression.LZ4.Streams.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Hash.xxHash, Version=1.0.8.0, Culture=neutral, PublicKeyToken=32cd54395057cec3, processorArchitecture=MSIL">
+      <HintPath>..\packages\K4os.Hash.xxHash.1.0.8\lib\net462\K4os.Hash.xxHash.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.5.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=8.1.0.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.8.1.0\lib\net48\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.ConfigurationManager, Version=4.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Configuration.ConfigurationManager.4.4.1\lib\net461\System.Configuration.ConfigurationManager.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=7.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.7.0.2\lib\net462\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Pipelines, Version=5.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Pipelines.5.0.2\lib\net461\System.IO.Pipelines.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Management" />
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="ZstdSharp, Version=0.7.1.0, Culture=neutral, PublicKeyToken=8d151af33a4ad5cf, processorArchitecture=MSIL">
+      <HintPath>..\packages\ZstdSharp.Port.0.7.1\lib\net461\ZstdSharp.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AboutDlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AboutDlg.Designer.cs">
+      <DependentUpon>AboutDlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddColumnDlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddColumnDlg.Designer.cs">
+      <DependentUpon>AddColumnDlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddOutReferenceDlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddOutReferenceDlg.Designer.cs">
+      <DependentUpon>AddOutReferenceDlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AssemblyCache\CacheAssemblies.cs" />
+    <Compile Include="AssemblyCache\CacheFlags.cs" />
+    <Compile Include="AssemblyCache\Controllers.cs" />
+    <Compile Include="AssemblyCache\GACDlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AssemblyCache\GACDlg.Designer.cs">
+      <DependentUpon>GACDlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AssemblyCache\IAssemblyEnum.cs" />
+    <Compile Include="AssemblyCache\IAssemblyName.cs" />
+    <Compile Include="AssemblyCache\NameDisplayFlags.cs" />
+    <Compile Include="BuildDomainDlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BuildDomainDlg.Designer.cs">
+      <DependentUpon>BuildDomainDlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ControlsDlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ControlsDlg.Designer.cs">
+      <DependentUpon>ControlsDlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CheckBoxPropertyWrapper.cs" />
+    <Compile Include="Controls\ColumnPropertyWrapper.cs" />
+    <Compile Include="Controls\ControlPropertyWrapper.cs" />
+    <Compile Include="Controls\ComboBoxPropertyWrapper.cs" />
+    <Compile Include="Controls\EditorWrapper\MultiColumnNameEditor.cs" />
+    <Compile Include="Controls\TextBoxPropertyWrapper.cs" />
+    <Compile Include="Controls\PopupPropertyWrapper.cs" />
+    <Compile Include="Controls\OptionPropertyWrapper.cs" />
+    <Compile Include="Controls\ListBoxPropertyWrapper.cs" />
+    <Compile Include="Controls\ImagePropertyWrapper.cs" />
+    <Compile Include="Controls\CustomPropertyDescriptor.cs" />
+    <Compile Include="Controls\DisplayTextAttribute.cs" />
+    <Compile Include="Controls\DomainPropertyWrapper.cs" />
+    <Compile Include="Controls\EditorWrapper\ClientProfilerEditor.cs" />
+    <Compile Include="Controls\EditorWrapper\LOVEditor.cs" />
+    <Compile Include="Controls\ExplorerTreeNode.cs" />
+    <Compile Include="Controls\UserControls\ListView\Designers.cs" />
+    <Compile Include="Controls\UserControls\ListView\ListviewAPI.cs" />
+    <Compile Include="Controls\UserControls\ListView\XPListview.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\UserControls\ListView\XPListViewGroup.cs" />
+    <Compile Include="Controls\UserControls\ListView\XPListViewGroupCollection.cs" />
+    <Compile Include="Controls\UserControls\ListView\XPListViewItem.cs" />
+    <Compile Include="Controls\UserControls\ListView\XPListViewItemCollection.cs" />
+    <Compile Include="Controls\UserControls\MirroredListView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\UserControls\MirroredTreeView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\UserControls\MultiTreeView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\NamedPropertyWrapper.cs" />
+    <Compile Include="Controls\PropertyWrapper.cs" />
+    <Compile Include="Controls\ReferenceJoinPropertyWrapper.cs" />
+    <Compile Include="Controls\ReferencePropertyWrapper.cs" />
+    <Compile Include="Controls\TablePropertyWrapper.cs" />
+    <Compile Include="Controls\TreeNodeType.cs" />
+    <Compile Include="Database\Access\AccessDriver.cs" />
+    <Compile Include="Database\Access\AccessSchemaExtractor.cs" />
+    <Compile Include="Database\Driver.cs" />
+    <Compile Include="Database\DriverFactory.cs" />
+    <Compile Include="Database\Info\KeyInfo.cs" />
+    <Compile Include="Database\MSSQL\MSSQLDriver.cs" />
+    <Compile Include="Database\MSSQL\MSSQLSchemaExtractor.cs" />
+    <Compile Include="Database\MySQL\MySQLDriver.cs" />
+    <Compile Include="Database\MySQL\MySQLSchemaExtractor.cs" />
+    <Compile Include="Database\Oracle\OracleDriver.cs" />
+    <Compile Include="Database\Oracle\OracleSchemaExtractor.cs" />
+    <Compile Include="Database\SchemaExtractor.cs" />
+    <Compile Include="Database\Info\ColumnInfo.cs" />
+    <Compile Include="Database\Info\ConstraintInfo.cs" />
+    <Compile Include="Database\TypesFactory.cs" />
+    <Compile Include="DriverDlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DriverDlg.Designer.cs">
+      <DependentUpon>DriverDlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Engine\CodeGenerationDlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Engine\CodeGenerationDlg.Designer.cs">
+      <DependentUpon>CodeGenerationDlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Engine\FileOutput.cs" />
+    <Compile Include="Engine\ICodeOutput.cs" />
+    <Compile Include="Engine\SmartCodeEngine.cs" />
+    <Compile Include="Engine\GenerationArgs.cs" />
+    <Compile Include="Engine\OutputInfo.cs" />
+    <Compile Include="EntitiesDlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EntitiesDlg.Designer.cs">
+      <DependentUpon>EntitiesDlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GenerationDlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GenerationDlg.Designer.cs">
+      <DependentUpon>GenerationDlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LibrariesDlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LibrariesDlg.Designer.cs">
+      <DependentUpon>LibrariesDlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Preferences.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="RecentFilesCollection.cs" />
+    <Compile Include="RefreshProjectDlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RefreshProjectDlg.Designer.cs">
+      <DependentUpon>RefreshProjectDlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Splash.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Splash.Designer.cs">
+      <DependentUpon>Splash.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\LibraryInfo.cs" />
+    <Compile Include="Model\BuildDomain.cs" />
+    <Compile Include="Project.cs" />
+    <Compile Include="SmartStudio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SmartStudio.Designer.cs">
+      <DependentUpon>SmartStudio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AboutDlg.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>AboutDlg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddColumnDlg.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>AddColumnDlg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddOutReferenceDlg.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>AddOutReferenceDlg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AssemblyCache\GACDlg.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>GACDlg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BuildDomainDlg.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>BuildDomainDlg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControlsDlg.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ControlsDlg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\UserControls\ListView\XPListview.resx">
+      <DependentUpon>XPListview.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DriverDlg.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>DriverDlg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Engine\CodeGenerationDlg.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>CodeGenerationDlg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EntitiesDlg.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>EntitiesDlg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GenerationDlg.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>GenerationDlg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LibrariesDlg.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>LibrariesDlg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RefreshProjectDlg.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>RefreshProjectDlg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SmartStudio.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>SmartStudio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Splash.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>Splash.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Templates\TemplateInfo.cs" />
+    <Compile Include="Utils\Common.cs" />
+    <Compile Include="Utils\Configuration.cs" />
+    <Compile Include="Utils\Mapper.cs" />
+    <Compile Include="Utils\TemplatesLoader.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SmartCode.Model.Mapping\SmartCode.Model.Mapping.csproj">
+      <Project>{1EDAFBDC-96BE-48FA-8499-95272959CB9E}</Project>
+      <Name>SmartCode.Model.Mapping</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SmartCode.Model\SmartCode.Model.csproj">
+      <Project>{4DC59315-087C-4EFC-B8F5-B89097E18A94}</Project>
+      <Name>SmartCode.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TaHoGen\TaHoGenv3_Src\TaHoGen v3.csproj">
+      <Project>{71FFDDDC-92CB-49B4-B441-D809DEEA00ED}</Project>
+      <Name>TaHoGen v3</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NewIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\file_new.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\item416x16 24-bit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\saveas-alt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gears.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\conf.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\open116x16 24-bit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save all16x16 24-bit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save16x16 24-bit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\open216x16 8-bit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cubes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cubes.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add16x16 8-bit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\remove.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\statistics.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ErModelPage.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Loaded_Libraries.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Libary.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\folder_open_16_h.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\open_document_16.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\forward-alt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\back-alt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Sc.ico" />
+    <None Include="Resources\addLibrary.gif" />
+    <None Include="Resources\ViewLibraries.gif" />
+    <None Include="Resources\Generate.gif" />
+    <Content Include="Sc.ico" />
+    <None Include="License.rtf">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\Splash.bmp" />
+    <None Include="Resources\Constant.png" />
+    <None Include="Resources\AddLibraryrHS.png" />
+    <None Include="Resources\LibrariesHS.png" />
+    <None Include="Resources\saveHS.png" />
+    <None Include="Resources\AddTableHS.png" />
+    <None Include="Resources\ActualSizeHS.png" />
+    <None Include="Resources\ZoomHS.png" />
+    <None Include="Resources\XMLFileHS.png" />
+    <None Include="Resources\WindowsHS.png" />
+    <None Include="Resources\WebInsertHyperlinkHS.png" />
+    <None Include="Resources\Web.png" />
+    <None Include="Resources\WarningHS.png" />
+    <None Include="Resources\ViewThumbnailsHS.png" />
+    <None Include="Resources\TileWindowsHorizontallyHS.png" />
+    <None Include="Resources\ThumbnailViewHS.png" />
+    <None Include="Resources\ThumbnailView.png" />
+    <None Include="Resources\ThumbnailLoadingHS.png" />
+    <None Include="Resources\TextboxHS.png" />
+    <None Include="Resources\TaskHS.png" />
+    <None Include="Resources\TableHS.png" />
+    <None Include="Resources\SymbolHS.png" />
+    <None Include="Resources\SychronizeListHS.png" />
+    <None Include="Resources\StopHS.png" />
+    <None Include="Resources\SplitSubdocumentHS.png" />
+    <None Include="Resources\SpeechMicHS.png" />
+    <None Include="Resources\SortUpHS.png" />
+    <None Include="Resources\SortHS.png" />
+    <None Include="Resources\ShowRulerHS.png" />
+    <None Include="Resources\ShowRulelinesHS.png" />
+    <None Include="Resources\ShowGridlinesHS.png" />
+    <None Include="Resources\ShowGridlines2HS.png" />
+    <None Include="Resources\ShowAllCommentsHS.png" />
+    <None Include="Resources\SendToBackHS.png" />
+    <None Include="Resources\SendBackwardHS.png" />
+    <None Include="Resources\SearchWebHS.png" />
+    <None Include="Resources\SearchFolderHS.png" />
+    <None Include="Resources\SaveFormDesignHS.png" />
+    <None Include="Resources\SaveAsWebPageHS.png" />
+    <None Include="Resources\SaveAllHS.png" />
+    <None Include="Resources\RulerHS.png" />
+    <None Include="Resources\RoutingSlipHS.png" />
+    <None Include="Resources\RightToLeftDoucmentHS.png" />
+    <None Include="Resources\RightsRestrictedHS.png" />
+    <None Include="Resources\RightArrowHS.png" />
+    <None Include="Resources\RightArrow2HS.png" />
+    <None Include="Resources\RighsRestrictedHS.png" />
+    <None Include="Resources\RestartHS.png" />
+    <None Include="Resources\ResizeHS.png" />
+    <None Include="Resources\RepeatHS.png" />
+    <None Include="Resources\RenameFolderHS.png" />
+    <None Include="Resources\RelationshipsHS.png" />
+    <None Include="Resources\RefreshDocViewHS.png" />
+    <None Include="Resources\RecordHS.png" />
+    <None Include="Resources\RecolorPictureHS.png" />
+    <None Include="Resources\RadialChartHS.png" />
+    <None Include="Resources\PushpinHS.png" />
+    <None Include="Resources\PublishToWebHS.png" />
+    <None Include="Resources\PublishPlanHS.png" />
+    <None Include="Resources\ProtectSubdocumentHS.png" />
+    <None Include="Resources\ProtectFormHS.png" />
+    <None Include="Resources\PropertiesHS.png" />
+    <None Include="Resources\PrintSetupHS.png" />
+    <None Include="Resources\PrintPreviewHS.png" />
+    <None Include="Resources\PrintHS.png" />
+    <None Include="Resources\PrimaryKeyHS.png" />
+    <None Include="Resources\PreviousPageHS.png" />
+    <None Include="Resources\PortraitLandscapeHS.png" />
+    <None Include="Resources\PortraitHS.png" />
+    <None Include="Resources\PointerHS.png" />
+    <None Include="Resources\PlayHS.png" />
+    <None Include="Resources\PieChartHS.png" />
+    <None Include="Resources\PieChart3DHS.png" />
+    <None Include="Resources\PauseRecorderHS.png" />
+    <None Include="Resources\PauseHS.png" />
+    <None Include="Resources\PasteHS.png" />
+    <None Include="Resources\PageWidthHS.png" />
+    <None Include="Resources\PageUpHS.png" />
+    <None Include="Resources\pageNumberHS.png" />
+    <None Include="Resources\OutdentHS.png" />
+    <None Include="Resources\OrgChartHS.png" />
+    <None Include="Resources\OrganizerHS.png" />
+    <None Include="Resources\OptionsHS.png" />
+    <None Include="Resources\OpenSelectedItemHS.png" />
+    <None Include="Resources\openHS.png" />
+    <None Include="Resources\openfolderHS.png" />
+    <None Include="Resources\NoteHS.png" />
+    <None Include="Resources\NextPageHS.png" />
+    <None Include="Resources\NewReportHS.png" />
+    <None Include="Resources\NewMessageHS.png" />
+    <None Include="Resources\NewFolderHS.png" />
+    <None Include="Resources\NewDocumentHS.png" />
+    <None Include="Resources\NewCardHS.png" />
+    <None Include="Resources\NavForward.png" />
+    <None Include="Resources\NavBack.png" />
+    <None Include="Resources\MultiplePagesHS.png" />
+    <None Include="Resources\MoveToFolderHS.png" />
+    <None Include="Resources\MoveFolderHS.png" />
+    <None Include="Resources\MonthlyViewHS.png" />
+    <None Include="Resources\List_NumberedVertTHS.png" />
+    <None Include="Resources\List_NumberedTBHS.png" />
+    <None Include="Resources\List_NumberedRTLHS.png" />
+    <None Include="Resources\List_NumberedHS.png" />
+    <None Include="Resources\List_BulletsHS.png" />
+    <None Include="Resources\LineColorHS.png" />
+    <None Include="Resources\LegendHS.png" />
+    <None Include="Resources\ItalicHS.png" />
+    <None Include="Resources\InsertTabControlHS.png" />
+    <None Include="Resources\InsertPictureHS.png" />
+    <None Include="Resources\InsertHyperlinkHS.png" />
+    <None Include="Resources\IndentHS.png" />
+    <None Include="Resources\ImportXMLHS.png" />
+    <None Include="Resources\HTMLSubmitHS.png" />
+    <None Include="Resources\HTMLPasswordHS.png" />
+    <None Include="Resources\HTMLPageHS.png" />
+    <None Include="Resources\HtmlBalanceBracesHS.png" />
+    <None Include="Resources\HomeHS.png" />
+    <None Include="Resources\HighlightHS.png" />
+    <None Include="Resources\Help.png" />
+    <None Include="Resources\graphhs.png" />
+    <None Include="Resources\GotoShortcutsHS.png" />
+    <None Include="Resources\GoToPreviousMessage.png" />
+    <None Include="Resources\GoToPrevious.png" />
+    <None Include="Resources\GoToParentFolderHS.png" />
+    <None Include="Resources\GoToNextHS.png" />
+    <None Include="Resources\GoRtlHS.png" />
+    <None Include="Resources\GoLtrHS.png" />
+    <None Include="Resources\FunctionHS.png" />
+    <None Include="Resources\FullScreenHS.png" />
+    <None Include="Resources\FullScreen.png" />
+    <None Include="Resources\FormulaEvaluatorHS.png" />
+    <None Include="Resources\FormRunHS.png" />
+    <None Include="Resources\FontSchemeHS.png" />
+    <None Include="Resources\FontHS.png" />
+    <None Include="Resources\FontDialogHS.png" />
+    <None Include="Resources\FlipVerticalHS.png" />
+    <None Include="Resources\FlipHorizontalHS.png" />
+    <None Include="Resources\Flag_redHS.png" />
+    <None Include="Resources\Flag_greenHS.png" />
+    <None Include="Resources\Flag_blueHS.png" />
+    <None Include="Resources\FindNextHS.png" />
+    <None Include="Resources\FindHS.png" />
+    <None Include="Resources\Filter2HS.png" />
+    <None Include="Resources\FillUpHS.png" />
+    <None Include="Resources\FillRightHS.png" />
+    <None Include="Resources\FillLeftHS.png" />
+    <None Include="Resources\FillDownHS.png" />
+    <None Include="Resources\FaxHS.png" />
+    <None Include="Resources\ExpirationHS.png" />
+    <None Include="Resources\ExpandSpaceHS.png" />
+    <None Include="Resources\eps_openHS.png" />
+    <None Include="Resources\eps_open_largelHS.png" />
+    <None Include="Resources\eps_closedHS.png" />
+    <None Include="Resources\EnvelopeHS.png" />
+    <None Include="Resources\EditTableHS.png" />
+    <None Include="Resources\EditInformationHS.png" />
+    <None Include="Resources\EditCodeHS.png" />
+    <None Include="Resources\EditBrightContrastHS.png" />
+    <None Include="Resources\Edit_UndoHS.png" />
+    <None Include="Resources\Edit_RedoHS.png" />
+    <None Include="Resources\DoubleRightArrowHS.png" />
+    <None Include="Resources\DoubleLeftArrowHS.png" />
+    <None Include="Resources\DocumentHS.png" />
+    <None Include="Resources\DisplayInColorHS.png" />
+    <None Include="Resources\DialHS.png" />
+    <None Include="Resources\DeleteHS.png" />
+    <None Include="Resources\DeleteFolderHS.png" />
+    <None Include="Resources\DataContainer_NewRecordHS.png" />
+    <None Include="Resources\DataContainer_MovePreviousHS.png" />
+    <None Include="Resources\DataContainer_MoveNextHS.png" />
+    <None Include="Resources\DataContainer_MoveLastHS.png" />
+    <None Include="Resources\DataContainer_MoveFirstHS.png" />
+    <None Include="Resources\DataContainer_MoveFirsHS.png" />
+    <None Include="Resources\CutHS.png" />
+    <None Include="Resources\CopyHS.png" />
+    <None Include="Resources\CopyFolderHS.png" />
+    <None Include="Resources\ConflictHS.png" />
+    <None Include="Resources\compareversionsHS.png" />
+    <None Include="Resources\CommentHS.png" />
+    <None Include="Resources\ColorHS.png" />
+    <None Include="Resources\Color_fontHS.png" />
+    <None Include="Resources\Color_font.png" />
+    <None Include="Resources\CheckSpellingHS.png" />
+    <None Include="Resources\CheckGrammarHS.png" />
+    <None Include="Resources\CheckBoxHS.png" />
+    <None Include="Resources\CenterAcrossHS.png" />
+    <None Include="Resources\CascadeWindowsHS.png" />
+    <None Include="Resources\CanvasScaleHS.png" />
+    <None Include="Resources\Calendar_scheduleHS.png" />
+    <None Include="Resources\CalculatorHS.png" />
+    <None Include="Resources\BringToFrontHS.png" />
+    <None Include="Resources\BringForwardHS.png" />
+    <None Include="Resources\BreakpointHS.png" />
+    <None Include="Resources\Book_StackOfReportsHS.png" />
+    <None Include="Resources\book_reportHS.png" />
+    <None Include="Resources\Book_openHS.png" />
+    <None Include="Resources\Book_angleHS.png" />
+    <None Include="Resources\book_addressHS.png" />
+    <None Include="Resources\boldhs.png" />
+    <None Include="Resources\BehindTextHS.png" />
+    <None Include="Resources\BarCodeHS.png" />
+    <None Include="Resources\BackgroundSoundHS.png" />
+    <None Include="Resources\AudioHS.png" />
+    <None Include="Resources\AttachmentHS.png" />
+    <None Include="Resources\ArrangeWindowsHS.png" />
+    <None Include="Resources\ArrangeSideBySideHS.png" />
+    <None Include="Resources\AlignToGridHS.png" />
+    <None Include="Resources\AlignTableCellMiddleRightHS.png" />
+    <None Include="Resources\AlignTableCellMiddleLeftJustHS.png" />
+    <None Include="Resources\AlignTableCellMiddleCenterHS.png" />
+    <None Include="Resources\AlignObjectsTopHS.png" />
+    <None Include="Resources\AlignObjectsRightHS.png" />
+    <None Include="Resources\AlignObjectsLeftHS.png" />
+    <None Include="Resources\AlignObjectsCenteredVerticalHS.png" />
+    <None Include="Resources\AlignObjectsCenteredHorizontalHS.png" />
+    <None Include="Resources\AlignObjectsBottomHS.png" />
+    <None Include="Resources\AddToFavoritesHS.png" />
+    <None Include="Resources\uparrow.png" />
+    <None Include="Resources\ThumbTop.png" />
+    <None Include="Resources\ThumbSpanTop.png" />
+    <None Include="Resources\ThumbSpanBottom.png" />
+    <None Include="Resources\ThumbMiddle.png" />
+    <None Include="Resources\ThumbBottom.png" />
+    <None Include="Resources\downarrow.png" />
+    <None Include="Resources\Screenshot - 11_17_2006 , 11_15_08 PM.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

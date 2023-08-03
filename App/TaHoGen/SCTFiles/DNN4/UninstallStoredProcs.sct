@@ -1,0 +1,84 @@
+<%@ CodeTemplate Language="C#" Inherits="CodeSmith.BaseTemplates.SqlCodeTemplate" TargetLanguage="T-SQL" Description="Generates DROP statements for the SELECT/INSERT/UPDATE/DELETE stored procedure based on a database table schema." %>
+<%@ Property Name="SourceTable" Type="SmartCode.Model.Mapping.CS.TableSchema" Category="Context" Description="Table that the object is based on." %>
+<%@ Property Name="InsertKeyword" Type="System.String" Default="Add" Category="Style" Description="Suffix to use for all generated INSERT stored procedures." %>
+<%@ Property Name="UpdateKeyword" Type="System.String" Default="Update" Category="Style" Description="Suffix to use for all generated UPDATE stored procedures." %>
+<%@ Property Name="DeleteKeyword" Type="System.String" Default="Delete" Category="Style" Description="Suffix to use for all generated DELETE stored procedures." %>
+<%@ Property Name="SelectKeyword" Type="System.String" Default="Get" Category="Style" Description="Suffix to use for all generated SELECT stored procedures." %>
+<%@ Property Name="ListKeyword" Type="System.String" Default="List" Category="Style" Description="Suffix to use for all generated SELECT stored procedures." %>
+<%@ Property Name="ModuleName" Type="System.String" Default="" Category="Style" Description="" %>
+<%@ Assembly Name="SmartCode.Model.Mapping" %>
+<%@ Import Namespace="SmartCode.Model.Mapping.CS" %>
+<%@ Import Namespace="System.Text.RegularExpressions" %>
+<%-- 
+	Rev 2007.03.03
+	For the latest version of this template, http://quiziqal.com/files/default.aspx		
+--%> 
+/************************************************************/
+/*****              SqlDataProvider                     *****/
+/*****                                                  *****/
+/*****                                                  *****/
+/***** Note: To manually execute this script you must   *****/
+/*****       perform a search and replace operation     *****/
+/*****       for {databaseOwner} and {objectQualifier}  *****/
+/*****                                                  *****/
+/************************************************************/
+
+/* =====================================================================================
+/   TABLE: <%=ModuleName%>
+/  ===================================================================================== */
+<% if (SourceTable.PrimaryKey == null) throw new ApplicationException("SourceTable does not contain a primary key."); %>
+<% if (SourceTable.PrimaryKey != null) { %>
+
+-- DROP GET PROCEDURE -------------------------------------------------------------------------------------%>
+/****** Object:  Stored Procedure <%= GetStoredProcName(ModuleName, SelectKeyword) %>    Script Date: <%= DateTime.Now.ToLongDateString() %> ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'<%= GetStoredProcName(ModuleName, SelectKeyword) %>') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure <%= GetStoredProcName(ModuleName, SelectKeyword) %> 
+GO
+
+<%
+string DropColumnName = "";
+string DropKeyword = "";
+
+for( int i = 0; i < SourceTable.NonPrimaryKeyColumns.Count; i++ )
+{
+	if(SourceTable.NonPrimaryKeyColumns[i].ExtendedProperties["CS_Description"].Value.ToString().ToLower().StartsWith("get"))
+	{
+		DropColumnName = SourceTable.NonPrimaryKeyColumns[i].Name;
+		DropKeyword = SelectKeyword + "By" + DropColumnName;
+%>
+-- DROP GET BY <%=DropColumnName%> PROCEDURE -------------------------------------------------------------------------------------%>
+/****** Object:  Stored Procedure <%= GetStoredProcName(ModuleName, DropKeyword) %>    Script Date: <%= DateTime.Now.ToLongDateString() %> ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'<%= GetStoredProcName(ModuleName, DropKeyword) %>') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure <%= GetStoredProcName(ModuleName, DropKeyword) %> 
+GO
+
+<%
+	} // if
+} // for
+%>
+-- DROP LIST PROCEDURE -------------------------------------------------------------------------------------%>
+/****** Object:  Stored Procedure <%= GetStoredProcName(ModuleName, ListKeyword) %>     Script Date: <%= DateTime.Now.ToLongDateString() %> ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'<%= GetStoredProcName(ModuleName, ListKeyword) %>') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure <%= GetStoredProcName(ModuleName, ListKeyword) %>
+GO
+
+	<% } %>
+-- DROP INSERT PROCEDURE -----------------------------------------------------------------------------------%>
+/****** Object:  Stored Procedure <%= GetStoredProcName(ModuleName, InsertKeyword) %>    Script Date: <%= DateTime.Now.ToLongDateString() %> ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'<%= GetStoredProcName(ModuleName, InsertKeyword)%>') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure <%= GetStoredProcName(ModuleName, InsertKeyword)%>
+GO
+
+-- DROP UPDATE PROCEDURE -------------------------------------------------------------------------------------%>
+/****** Object:  Stored Procedure <%= GetStoredProcName(ModuleName, UpdateKeyword)%>    Script Date: <%= DateTime.Now.ToLongDateString() %> ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'<%= GetStoredProcName(ModuleName, UpdateKeyword)%>') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure <%= GetStoredProcName(ModuleName, UpdateKeyword)%>
+GO
+
+-- DROP DELETE PROCEDURE -------------------------------------------------------------------------------------%>
+/****** Object:  Stored Procedure <%= GetStoredProcName(ModuleName, DeleteKeyword)%>    Script Date: <%= DateTime.Now.ToLongDateString() %> ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'<%= GetStoredProcName(ModuleName, DeleteKeyword)%>') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure <%= GetStoredProcName(ModuleName, DeleteKeyword)%>
+GO
+
+ <!-- #include file="%%DNN4%%CommonFunctions.cs" -->

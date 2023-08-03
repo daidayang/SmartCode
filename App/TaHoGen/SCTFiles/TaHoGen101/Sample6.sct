@@ -1,0 +1,16 @@
+<%@ CodeTemplate ClassName="Sample6" Namespace="Samples" Language="C#" TargetLanguage="C#"%>
+<%@ Property Name="CurrentDomain" Type="SmartCode.Model.Domain" Category="Context" Description="The Domain to use for this sample." %>
+<%@ Assembly Src="/TaHoGen101/Helper.cs" %> 
+<%@ Assembly Name="SmartCode.Model" %>
+<%@ Assembly Name="TaHoGen101" %>
+<%@ Import Namespace="SmartCode.Model" %>
+
+public enum <%= Helper.PascalCase(CurrentDomain.DatabaseSchema.ConnectionInfo.Database) %>Tables
+{
+    <% 
+        foreach (TableSchema table in CurrentDomain.DatabaseSchema.GetAllTables()){
+            Response.WriteLine(Helper.PascalCase(table.Name));
+        }
+     %>	
+   
+}

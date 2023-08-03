@@ -1,0 +1,45 @@
+﻿body {
+}
+body {
+	font-size: 9pt;
+	margin: 10px;
+	font-family: Tahoma;
+	background-color: transparent;
+}
+.title {
+	font-weight: bold;
+	font-size: 18pt;
+	font-style: italic;
+	font-family: Tahoma;
+}
+TR.AlternatingItemStyle
+{
+	background-color: #ffffcc;
+}
+table {
+	font-family: Tahoma;
+	font-size: 9pt;
+}
+.label
+{
+	font-weight: bold;
+	text-align: left;
+	color: white;
+	background-color: Gray ;
+}
+.header
+{
+	font-weight: bold;
+	color: white;
+	background-color: Gray;
+}
+
+
+a:visited {
+	color: black;
+}
+a:hover {
+	text-decoration: underline;
+	color: Red;
+}
+

@@ -1,0 +1,327 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{76558DAD-B319-498B-B8AC-89C25682FA01}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Northwind.Web</RootNamespace>
+    <AssemblyName>Northwind.Web</AssemblyName>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="NHibernate, Version=1.2.0.3001, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\NHibernate\bin\net-2.0\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CategoryEdit.aspx" />
+    <Content Include="CategoryList.aspx" />
+    <Content Include="CustomerCustomerDemoEdit.aspx" />
+    <Content Include="CustomerCustomerDemoList.aspx" />
+    <Content Include="CustomerDemographicEdit.aspx" />
+    <Content Include="CustomerDemographicList.aspx" />
+    <Content Include="CustomerEdit.aspx" />
+    <Content Include="CustomerList.aspx" />
+    <Content Include="Default.html" />
+    <Content Include="EmployeeEdit.aspx" />
+    <Content Include="EmployeeList.aspx" />
+    <Content Include="EmployeeTerritoryEdit.aspx" />
+    <Content Include="EmployeeTerritoryList.aspx" />
+    <Content Include="HTMLPage1.htm" />
+    <Content Include="OrderDetailEdit.aspx" />
+    <Content Include="OrderDetailList.aspx" />
+    <Content Include="OrderEdit.aspx" />
+    <Content Include="OrderList.aspx" />
+    <Content Include="ProductEdit.aspx" />
+    <Content Include="ProductList.aspx" />
+    <Content Include="RegionEdit.aspx" />
+    <Content Include="RegionList.aspx" />
+    <Content Include="ShipperEdit.aspx" />
+    <Content Include="ShipperList.aspx" />
+    <Content Include="Style.css" />
+    <Content Include="SupplierEdit.aspx" />
+    <Content Include="SupplierList.aspx" />
+    <Content Include="TerritoryEdit.aspx" />
+    <Content Include="TerritoryList.aspx" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CategoryEdit.aspx.cs">
+      <DependentUpon>CategoryEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CategoryEdit.aspx.designer.cs">
+      <DependentUpon>CategoryEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CategoryList.aspx.cs">
+      <DependentUpon>CategoryList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CategoryList.aspx.designer.cs">
+      <DependentUpon>CategoryList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerCustomerDemoEdit.aspx.cs">
+      <DependentUpon>CustomerCustomerDemoEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomerCustomerDemoEdit.aspx.designer.cs">
+      <DependentUpon>CustomerCustomerDemoEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerCustomerDemoList.aspx.cs">
+      <DependentUpon>CustomerCustomerDemoList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomerCustomerDemoList.aspx.designer.cs">
+      <DependentUpon>CustomerCustomerDemoList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerDemographicEdit.aspx.cs">
+      <DependentUpon>CustomerDemographicEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomerDemographicEdit.aspx.designer.cs">
+      <DependentUpon>CustomerDemographicEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerDemographicList.aspx.cs">
+      <DependentUpon>CustomerDemographicList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomerDemographicList.aspx.designer.cs">
+      <DependentUpon>CustomerDemographicList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerEdit.aspx.cs">
+      <DependentUpon>CustomerEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomerEdit.aspx.designer.cs">
+      <DependentUpon>CustomerEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerList.aspx.cs">
+      <DependentUpon>CustomerList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomerList.aspx.designer.cs">
+      <DependentUpon>CustomerList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeEdit.aspx.cs">
+      <DependentUpon>EmployeeEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EmployeeEdit.aspx.designer.cs">
+      <DependentUpon>EmployeeEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeList.aspx.cs">
+      <DependentUpon>EmployeeList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EmployeeList.aspx.designer.cs">
+      <DependentUpon>EmployeeList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeTerritoryEdit.aspx.cs">
+      <DependentUpon>EmployeeTerritoryEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EmployeeTerritoryEdit.aspx.designer.cs">
+      <DependentUpon>EmployeeTerritoryEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeTerritoryList.aspx.cs">
+      <DependentUpon>EmployeeTerritoryList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EmployeeTerritoryList.aspx.designer.cs">
+      <DependentUpon>EmployeeTerritoryList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="OrderDetailEdit.aspx.cs">
+      <DependentUpon>OrderDetailEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="OrderDetailEdit.aspx.designer.cs">
+      <DependentUpon>OrderDetailEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="OrderDetailList.aspx.cs">
+      <DependentUpon>OrderDetailList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="OrderDetailList.aspx.designer.cs">
+      <DependentUpon>OrderDetailList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="OrderEdit.aspx.cs">
+      <DependentUpon>OrderEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="OrderEdit.aspx.designer.cs">
+      <DependentUpon>OrderEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="OrderList.aspx.cs">
+      <DependentUpon>OrderList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="OrderList.aspx.designer.cs">
+      <DependentUpon>OrderList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProductEdit.aspx.cs">
+      <DependentUpon>ProductEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProductEdit.aspx.designer.cs">
+      <DependentUpon>ProductEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProductList.aspx.cs">
+      <DependentUpon>ProductList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProductList.aspx.designer.cs">
+      <DependentUpon>ProductList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="RegionEdit.aspx.cs">
+      <DependentUpon>RegionEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegionEdit.aspx.designer.cs">
+      <DependentUpon>RegionEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RegionList.aspx.cs">
+      <DependentUpon>RegionList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegionList.aspx.designer.cs">
+      <DependentUpon>RegionList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ShipperEdit.aspx.cs">
+      <DependentUpon>ShipperEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ShipperEdit.aspx.designer.cs">
+      <DependentUpon>ShipperEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ShipperList.aspx.cs">
+      <DependentUpon>ShipperList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ShipperList.aspx.designer.cs">
+      <DependentUpon>ShipperList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SupplierEdit.aspx.cs">
+      <DependentUpon>SupplierEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SupplierEdit.aspx.designer.cs">
+      <DependentUpon>SupplierEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SupplierList.aspx.cs">
+      <DependentUpon>SupplierList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SupplierList.aspx.designer.cs">
+      <DependentUpon>SupplierList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TerritoryEdit.aspx.cs">
+      <DependentUpon>TerritoryEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TerritoryEdit.aspx.designer.cs">
+      <DependentUpon>TerritoryEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TerritoryList.aspx.cs">
+      <DependentUpon>TerritoryList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TerritoryList.aspx.designer.cs">
+      <DependentUpon>TerritoryList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\NHibernateSessionModule.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Northwind.Core\Northwind.Core.csproj">
+      <Project>{860E9BF5-ECA0-403C-92B2-D8DDB696BB1B}</Project>
+      <Name>Northwind.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Northwind.Data\Northwind.Data.csproj">
+      <Project>{DF442913-716B-4A18-8A70-004B0FEB0168}</Project>
+      <Name>Northwind.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProjectBase.Utils\ProjectBase.Utils.csproj">
+      <Project>{24D21FC0-59B8-4208-AA1D-1B30D3F3C101}</Project>
+      <Name>ProjectBase.Utils</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" Condition="" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>1395</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

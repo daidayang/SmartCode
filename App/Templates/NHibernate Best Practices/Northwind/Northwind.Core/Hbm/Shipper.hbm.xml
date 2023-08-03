@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="Northwind.Core" namespace="Northwind.Core.Domain">
+    <class name="Shipper" table="Shippers" >
+    <id name="ID" type="System.Int32" column="ShipperID">
+        <generator class="identity"/>
+    </id>
+    <property name="CompanyName" column="CompanyName" type="System.String" not-null="true" length="40"/>
+    <property name="Phone" column="Phone" type="System.String" not-null="false" length="24"/>
+    <bag name="Orderses" table="Orders" inverse="true" lazy="true" cascade="delete">
+    <key column="ShipVia" />
+    <one-to-many class="Order"/>
+    </bag>
+ </class>
+</hibernate-mapping>

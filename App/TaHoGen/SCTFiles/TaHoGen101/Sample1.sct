@@ -1,0 +1,7 @@
+<%@ CodeTemplate Language="C#" TargetLanguage="Text" Description="This template demonstrates using expression write and code constructs." %>
+
+This is some static content (just like the static HTML in a ASP page).
+<%= "This is dynamic content using an expression write construct." %>
+
+
+This is more static content.

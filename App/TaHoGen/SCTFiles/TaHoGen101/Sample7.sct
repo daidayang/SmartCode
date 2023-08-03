@@ -1,0 +1,17 @@
+<%@ CodeTemplate ClassName="Sample7" Namespace="Samples" Language="C#" TargetLanguage="C#"%>
+<%@ Property Name="CurrentDomain" Type="SmartCode.Model.Domain" Category="Context" Description="The Domain to use for this sample." %>
+<%@ Property Name="SourceTable" Type="SmartCode.Model.TableSchema" Category="Context" Description="The Table to use for this sample." %>
+<%@ Assembly Src= "/TaHoGen101/Helper.cs" %> 
+<%@ Assembly Name="SmartCode.Model" %>
+<%@ Import Namespace="SmartCode.Model" %>
+
+<% foreach (ColumnSchema column in this.SourceTable.Columns()) {  %>
+private <%= column.NetDataType %> _<%= Helper.CamelCase(column.Name) %>;
+
+public <%= column.NetDataType %> <%= Helper.PascalCase(column.Name) %>
+{
+	get { return _<%= Helper.CamelCase(column.Name) %>; }
+	set { _<%= Helper.CamelCase(column.Name) %> = value; }
+}
+
+<% } %>

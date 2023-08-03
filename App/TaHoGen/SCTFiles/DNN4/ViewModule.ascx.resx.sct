@@ -1,0 +1,66 @@
+<%@ CodeTemplate Language="C#" TargetLanguage="XML" Description="Generates the resource file for the View[ModuleName].ascx web control." %>
+<%@ Property Name="SourceTable" Type="SmartCode.Model.Mapping.CS.TableSchema" Category="Context" Description="Table that the object is based on." %>
+<%@ Property Name="ModuleName" Type="System.String" Default="" Category="Style" Description="" %>
+<%@ Assembly Name="SmartCode.Model.Mapping" %>
+<%@ Import Namespace="SmartCode.Model.Mapping.CS" %>
+<%@ Import Namespace="System.Text.RegularExpressions" %>
+<%-- 
+	Rev 2007.03.03
+	For the latest version of this template, http://quiziqal.com/files/default.aspx		
+--%>
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+            <xsd:complexType>
+                <xsd:choice maxOccurs="unbounded">
+                    <xsd:element name="data">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                            </xsd:sequence>
+                            <xsd:attribute name="name" type="xsd:string" />
+                            <xsd:attribute name="type" type="xsd:string" />
+                            <xsd:attribute name="mimetype" type="xsd:string" />
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="resheader">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                            </xsd:sequence>
+                            <xsd:attribute name="name" type="xsd:string" use="required" />
+                        </xsd:complexType>
+                    </xsd:element>
+                </xsd:choice>
+            </xsd:complexType>
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="ResMimeType">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="Version">
+        <value>1.0.0.0</value>
+    </resheader>
+    <resheader name="Reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=1.0.3300.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="Writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=1.0.3300.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <data name="AddContent.Action">
+        <value>Add Content</value>
+    </data>
+    <data name="ModuleHelp.Text">
+	<value>&lt;P&gt;A <%= GetTableName(SourceTable) %> module</value>
+    </data>
+    <data name="DefaultContent.Text">
+	<value>Here is some sample content</value>
+    </data>
+    <data name="Template.Text">
+        <value>[CONTENT]</value>
+    </data>
+</root>
+
+<!-- #include file="%%DNN4%%CommonFunctions.cs" -->

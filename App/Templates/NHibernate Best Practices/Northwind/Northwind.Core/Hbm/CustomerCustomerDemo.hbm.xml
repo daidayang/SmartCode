@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="Northwind.Core" namespace="Northwind.Core.Domain">
+    <class name="CustomerCustomerDemo" table="CustomerCustomerDemo" >
+    <composite-id name="ID" class="Northwind.Core.Domain.CustomerCustomerDemo+DomainObjectID">
+        <key-property type="System.String" name="CustomerID" column="CustomerID" />
+        <key-property type="System.String" name="CustomerTypeID" column="CustomerTypeID" />
+    </composite-id>
+    <many-to-one name="CustomerIDCustomers" column="CustomerID" class="Customer"  update="0"  insert="0" />
+    <many-to-one name="CustomerTypeIDCustomerDemographics" column="CustomerTypeID" class="CustomerDemographic"  update="0"  insert="0" />
+ </class>
+</hibernate-mapping>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="Northwind.Core" namespace="Northwind.Core.Domain">
+    <class name="Employee" table="Employees" >
+    <id name="ID" type="System.Int32" column="EmployeeID">
+        <generator class="identity"/>
+    </id>
+    <property name="LastName" column="LastName" type="System.String" not-null="true" length="20"/>
+    <property name="FirstName" column="FirstName" type="System.String" not-null="true" length="10"/>
+    <property name="Title" column="Title" type="System.String" not-null="false" length="30"/>
+    <property name="TitleOfCourtesy" column="TitleOfCourtesy" type="System.String" not-null="false" length="25"/>
+    <property name="BirthDate" column="BirthDate" type="System.DateTime" not-null="false" />
+    <property name="HireDate" column="HireDate" type="System.DateTime" not-null="false" />
+    <property name="Address" column="Address" type="System.String" not-null="false" length="60"/>
+    <property name="City" column="City" type="System.String" not-null="false" length="15"/>
+    <property name="Region" column="Region" type="System.String" not-null="false" length="15"/>
+    <property name="PostalCode" column="PostalCode" type="System.String" not-null="false" length="10"/>
+    <property name="Country" column="Country" type="System.String" not-null="false" length="15"/>
+    <property name="HomePhone" column="HomePhone" type="System.String" not-null="false" length="24"/>
+    <property name="Extension" column="Extension" type="System.String" not-null="false" length="4"/>
+    <property name="Photo" column="Photo" type="System.Byte[]" not-null="false" />
+    <property name="Notes" column="Notes" type="System.String" not-null="false" />
+    <property name="ReportsTo" column="ReportsTo" type="System.Int32" not-null="false" />
+    <property name="PhotoPath" column="PhotoPath" type="System.String" not-null="false" length="255"/>
+    <many-to-one name="ReportsToEmployees" column="ReportsTo" class="Employee"  update="0"  insert="0" />
+    <bag name="Employeeses" table="Employees" inverse="true" lazy="true" cascade="delete">
+    <key column="ReportsTo" />
+    <one-to-many class="Employee"/>
+    </bag>
+    <bag name="Territorieses" table="EmployeeTerritories">
+        <key column="EmployeeID" />
+        <many-to-many class="Territory" column="TerritoryID" />
+    </bag>
+    <bag name="Orderses" table="Orders" inverse="true" lazy="true" cascade="delete">
+    <key column="EmployeeID" />
+    <one-to-many class="Order"/>
+    </bag>
+ </class>
+</hibernate-mapping>

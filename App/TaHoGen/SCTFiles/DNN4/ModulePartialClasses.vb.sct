@@ -1,0 +1,43 @@
+<%@ CodeTemplate Language="C#" TargetLanguage="VB.NET" Description="Generates a file with partial classes for custom code." %>
+<%@ Property Name="SourceTable" Type="SmartCode.Model.Mapping.CS.TableSchema" Category="Context" Description="Table that the object is based on." %>
+<%@ Property Name="Namespace" Type="System.String" Default="YourCompany" Category="Style" Description="Used to generate the Namespace declaration." %>
+<%@ Property Name="ModuleName" Type="System.String" Default="" Category="Style" Description="" %>
+<%@ Assembly Name="SmartCode.Model.Mapping" %>
+<%@ Import Namespace="SmartCode.Model.Mapping.CS" %>
+<%@ Import Namespace="System.Text.RegularExpressions" %>
+<%-- 
+	Rev 2007.03.03
+	For the latest version of this template, http://quiziqal.com/files/default.aspx		
+--%>
+Imports System
+Imports System.Configuration
+Imports System.Data
+Imports System.Data.SqlClient
+Imports System.XML
+Imports System.Web
+Imports System.Collections.Generic
+Imports DotNetNuke
+Imports DotNetNuke.Services.Search
+Imports DotNetNuke.Common.Utilities.XmlUtils
+Imports Microsoft.ApplicationBlocks.Data
+
+Namespace <%= Namespace %>.Modules.<%=ModuleName%>
+
+	Partial Public Class <%=ModuleName%>Info
+		' Add custom code here
+	End Class
+
+	Partial Public Class <%=ModuleName%>Controller
+		' Add custom code here
+	End Class
+
+	Partial Public Class SqlDataProvider
+		Inherits DataProvider
+		' Add custom code here
+	End Class
+
+	Partial Public MustInherit Class DataProvider
+		' Add custom code here	
+    End Class
+    
+End Namespace

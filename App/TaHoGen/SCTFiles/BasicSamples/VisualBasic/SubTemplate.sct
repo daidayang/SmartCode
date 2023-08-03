@@ -1,0 +1,7 @@
+<%@ CodeTemplate Namespace="MyTemplateNamespace"  ClassName="SubTemplate" Language="CS" TargetLanguage="CS"  Description="Demonstrates the use of a sub-template."%>
+My sub template content here.
+<% if (true) { %>
+True
+<% } else { %>
+False
+<% } %>

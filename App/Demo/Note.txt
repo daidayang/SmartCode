@@ -1,0 +1,2 @@
+Developed with SmartCode.Templates.Core Libraries
+Fix the ConnectionString in ...\Demo\DataAccess\BaseDAL.cs

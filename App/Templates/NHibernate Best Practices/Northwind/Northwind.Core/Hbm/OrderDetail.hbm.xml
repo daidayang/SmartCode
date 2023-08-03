@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="Northwind.Core" namespace="Northwind.Core.Domain">
+    <class name="OrderDetail" table="Order Details" >
+    <composite-id name="ID" class="Northwind.Core.Domain.OrderDetail+DomainObjectID">
+        <key-property type="System.Int32" name="OrderID" column="OrderID" />
+        <key-property type="System.Int32" name="ProductID" column="ProductID" />
+    </composite-id>
+    <property name="UnitPrice" column="UnitPrice" type="System.Decimal" not-null="true" />
+    <property name="Quantity" column="Quantity" type="System.Int16" not-null="true" />
+    <property name="Discount" column="Discount" type="System.Double" not-null="true" />
+    <many-to-one name="OrderIDOrders" column="OrderID" class="Order"  update="0"  insert="0" />
+    <many-to-one name="ProductIDProducts" column="ProductID" class="Product"  update="0"  insert="0" />
+ </class>
+</hibernate-mapping>

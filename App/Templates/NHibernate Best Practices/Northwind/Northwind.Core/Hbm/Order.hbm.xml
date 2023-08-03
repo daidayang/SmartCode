@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="Northwind.Core" namespace="Northwind.Core.Domain">
+    <class name="Order" table="Orders" >
+    <id name="ID" type="System.Int32" column="OrderID">
+        <generator class="identity"/>
+    </id>
+    <property name="CustomerID" column="CustomerID" type="System.String" not-null="false" length="5"/>
+    <property name="EmployeeID" column="EmployeeID" type="System.Int32" not-null="false" />
+    <property name="OrderDate" column="OrderDate" type="System.DateTime" not-null="false" />
+    <property name="RequiredDate" column="RequiredDate" type="System.DateTime" not-null="false" />
+    <property name="ShippedDate" column="ShippedDate" type="System.DateTime" not-null="false" />
+    <property name="ShipVia" column="ShipVia" type="System.Int32" not-null="false" />
+    <property name="Freight" column="Freight" type="System.Decimal" not-null="false" />
+    <property name="ShipName" column="ShipName" type="System.String" not-null="false" length="40"/>
+    <property name="ShipAddress" column="ShipAddress" type="System.String" not-null="false" length="60"/>
+    <property name="ShipCity" column="ShipCity" type="System.String" not-null="false" length="15"/>
+    <property name="ShipRegion" column="ShipRegion" type="System.String" not-null="false" length="15"/>
+    <property name="ShipPostalCode" column="ShipPostalCode" type="System.String" not-null="false" length="10"/>
+    <property name="ShipCountry" column="ShipCountry" type="System.String" not-null="false" length="15"/>
+    <many-to-one name="CustomerIDCustomers" column="CustomerID" class="Customer"  update="0"  insert="0" />
+    <many-to-one name="EmployeeIDEmployees" column="EmployeeID" class="Employee"  update="0"  insert="0" />
+    <many-to-one name="ShipViaShippers" column="ShipVia" class="Shipper"  update="0"  insert="0" />
+    <bag name="OrderDetailses" table="Order Details" inverse="true" lazy="true" cascade="delete">
+    <key column="OrderID" />
+    <one-to-many class="OrderDetail"/>
+    </bag>
+ </class>
+</hibernate-mapping>

@@ -1,0 +1,11 @@
+﻿<%@ CodeTemplate Language="C#" %>
+<%@ Property Name="TableName" Type="System.String" %>
+<%-- 
+This template demonstrates using properties in your template.
+--%>
+
+This is some static content (just like the static HTML in a ASP page).
+
+<%= "Hello " + this.TableName + "!" %>
+
+This is more static content.

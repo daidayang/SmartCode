@@ -1,0 +1,26 @@
+﻿<%@ CodeTemplate Language="C#" TargetLanguage="Text" Description="This template demonstrates using template script blocks." %>
+<%-- 
+This template demonstrates using template script blocks.
+--%>
+
+This is some static content (just like the static HTML in a ASP page).
+
+<%= SomeStringMethod() %>
+
+<% SomeRenderMethod(writer); %>
+
+This is more static content.
+
+<script runat="template">
+public string SomeStringMethod()
+{
+	return "Today's date: " + DateTime.Now.ToString("MM/dd/yyyy");
+}
+
+public void SomeRenderMethod(System.IO.TextWriter Response)
+{
+	Response.WriteLine("This is more dynamic content using a render method.");
+	Response.WriteLine("Hello " + System.Environment.UserName + "!");
+}
+
+</script>

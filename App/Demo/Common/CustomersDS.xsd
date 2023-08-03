@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema id="CustomersDS" targetNamespace="http://tempuri.org/CustomersDS.xsd" elementFormDefault="qualified"
+	attributeFormDefault="qualified" xmlns="http://tempuri.org/CustomersDS.xsd" xmlns:mstns="http://tempuri.org/CustomersDS.xsd"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" >
+	<xs:element name="CustomersDS" msdata:IsDataSet="true">
+		<xs:complexType>
+			<xs:choice maxOccurs="unbounded">
+				<xs:element name="Customers">
+					<xs:complexType>
+						<xs:sequence>
+				<xs:element name="CustomerID" type="xs:string"  minOccurs="0" msprop:nullValue="_null"/>
+				<xs:element name="CompanyName" type="xs:string"  minOccurs="0" msprop:nullValue="_null"/>
+				<xs:element name="ContactName" type="xs:string"/>
+				<xs:element name="ContactTitle" type="xs:string"/>
+				<xs:element name="Address" type="xs:string"/>
+				<xs:element name="City" type="xs:string"/>
+				<xs:element name="Region" type="xs:string"/>
+				<xs:element name="PostalCode" type="xs:string"/>
+				<xs:element name="Country" type="xs:string"/>
+				<xs:element name="Phone" type="xs:string"/>
+				<xs:element name="Fax" type="xs:string"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:choice>
+		</xs:complexType>
+		<xs:unique name="CustomersPK" msdata:PrimaryKey="true">
+			<xs:selector xpath=".//mstns:Customers" />
+			<xs:field xpath="mstns:CustomerID" />
+		</xs:unique>
+	</xs:element>
+</xs:schema>

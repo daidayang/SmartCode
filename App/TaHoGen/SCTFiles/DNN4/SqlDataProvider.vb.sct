@@ -1,0 +1,169 @@
+<%@ CodeTemplate Language="C#" TargetLanguage="C#" Description="Generates the SqlDataProvider DAL class." %>
+<%@ Property Name="SourceTable" Type="SmartCode.Model.Mapping.CS.TableSchema" Category="Context" Description="Table that the object is based on." %>
+<%@ Property Name="InsertKeyword" Type="System.String" Default="Add" Category="Style" Description="Suffix to use for all generated INSERT stored procedures." %>
+<%@ Property Name="UpdateKeyword" Type="System.String" Default="Update" Category="Style" Description="Suffix to use for all generated UPDATE stored procedures." %>
+<%@ Property Name="DeleteKeyword" Type="System.String" Default="Delete" Category="Style" Description="Suffix to use for all generated DELETE stored procedures." %>
+<%@ Property Name="SelectKeyword" Type="System.String" Default="Get" Category="Style" Description="Suffix to use for all generated SELECT stored procedures." %>
+<%@ Property Name="ListKeyword" Type="System.String" Default="GetAll" Category="Style" Description="Suffix to use for all generated SELECT stored procedures." %>
+<%@ Property Name="Namespace" Type="System.String" Default="YourCompany" Category="Style" Description="Used to generate the Namespace declaration." %>
+<%@ Property Name="OtherDatabase" Type="System.String" Default="" Optional="True" Category="DataSource" Description="If a value is entered, the generated modules will execute against the specified database. Requires an additional provider entry in the DotNetNuke/data section of the web.config file. If blank, the generated modules will exectue against tables in the DNN default database." %>
+<%@ Property Name="ModuleName" Type="System.String" Default="" Category="Style" Description="" %>
+<%@ Assembly Name="SmartCode.Model.Mapping" %>
+<%@ Import Namespace="SmartCode.Model.Mapping.CS" %>
+<%@ Import Namespace="System.Text.RegularExpressions" %>
+ 
+<%
+	string customProvider = "_providerConfiguration.DefaultProvider";
+	if(OtherDatabase != null && OtherDatabase.Length > 0)
+		customProvider = "\"" + OtherDatabase + "\"";
+%>
+Imports System
+Imports System.Configuration
+Imports System.Data
+Imports System.Data.SqlClient
+Imports Microsoft.ApplicationBlocks.Data
+
+Namespace <%= Namespace %>.Modules.<%=ModuleName%>
+
+    ''' -----------------------------------------------------------------------------
+    ''' <summary>
+    ''' SQL Server implementation of the abstract DataProvider class
+    ''' </summary>
+    ''' <remarks>
+    ''' </remarks>
+    ''' <history>
+    ''' </history>
+    ''' -----------------------------------------------------------------------------
+    Public Class SqlDataProvider
+
+        Inherits DataProvider
+
+#Region "Private Members"
+
+        Private Const ProviderType As String = "data"
+        Private Const ModuleQualifier As String = ""
+
+        Private _providerConfiguration As Framework.Providers.ProviderConfiguration = Framework.Providers.ProviderConfiguration.GetProviderConfiguration(ProviderType)
+        Private _connectionString As String
+        Private _providerPath As String
+        Private _objectQualifier As String
+        Private _databaseOwner As String
+
+#End Region
+
+#Region "Constructors"
+
+        Public Sub New()
+
+            ' Read the configuration specific information for this provider
+            Dim objProvider As Framework.Providers.Provider = CType(_providerConfiguration.Providers(<%=customProvider%>), Framework.Providers.Provider)
+
+            ' Read the attributes for this provider
+            If (Not objProvider.Attributes("connectionStringName") Is Nothing) AndAlso (Not objProvider.Attributes("connectionStringName").Equals(String.Empty)) AndAlso (Not ConfigurationManager.ConnectionStrings(objProvider.Attributes("connectionStringName")).ConnectionString.Equals(String.Empty)) Then
+                _connectionString = ConfigurationManager.ConnectionStrings(objProvider.Attributes("connectionStringName")).ConnectionString
+            Else
+                _connectionString = objProvider.Attributes("connectionString")
+            End If
+
+            _providerPath = objProvider.Attributes("providerPath")
+
+            _objectQualifier = objProvider.Attributes("objectQualifier")
+            If _objectQualifier <> "" And _objectQualifier.EndsWith("_") = False Then
+                _objectQualifier += "_"
+            End If
+
+            _databaseOwner = objProvider.Attributes("databaseOwner")
+            If _databaseOwner <> "" And _databaseOwner.EndsWith(".") = False Then
+                _databaseOwner += "."
+            End If
+
+        End Sub
+
+#End Region
+
+#Region "Properties"
+
+        Public ReadOnly Property ConnectionString() As String
+            Get
+                Return _connectionString
+            End Get
+        End Property
+
+        Public ReadOnly Property ProviderPath() As String
+            Get
+                Return _providerPath
+            End Get
+        End Property
+
+        Public ReadOnly Property ObjectQualifier() As String
+            Get
+                Return _objectQualifier
+            End Get
+        End Property
+
+        Public ReadOnly Property DatabaseOwner() As String
+            Get
+                Return _databaseOwner
+            End Get
+        End Property
+
+#End Region
+
+#Region "Private Methods"
+
+        Private Function GetFullyQualifiedName(ByVal name As String) As String
+            Return DatabaseOwner & ObjectQualifier & ModuleQualifier & name
+        End Function
+
+        Private Function GetNull(ByVal Field As Object) As Object
+            Return DotNetNuke.Common.Utilities.Null.GetNull(Field, DBNull.Value)
+        End Function
+
+#End Region
+
+#Region "Public Methods"
+
+        Public Overrides Function <%= GetMethodName(ModuleName, SelectKeyword) %>(<%= GetPrimaryKeyParameters(SourceTable, true, "vb").Trim() %><%= GetModuleIdParameter(SourceTable, true, true, "vb") %>) As IDataReader
+            Return CType(SqlHelper.ExecuteReader(ConnectionString, GetFullyQualifiedName("<%= GetRawStoredProcName(ModuleName, SelectKeyword)%>"), <%= GetPrimaryKeyParameters(SourceTable, false, "vb")%><%= GetModuleIdParameter(SourceTable, false, true, "vb") %>), IDataReader)
+        End Function
+
+<%
+string ColumnName = "";
+
+for( int i = 0; i < SourceTable.NonPrimaryKeyColumns.Count; i++ )
+{
+	if(SourceTable.NonPrimaryKeyColumns[i].ExtendedProperties["CS_Description"].Value.ToString().ToLower().StartsWith("get"))
+	{
+		ColumnName = SourceTable.NonPrimaryKeyColumns[i].Name;
+%>
+        Public Overrides Function <%= GetMethodName(ModuleName, SelectKeyword, ColumnName) %>(<%= GetSelectByColumnNameParameter(SourceTable.NonPrimaryKeyColumns[i], true, true, "vb").Trim() %><%= GetModuleIdParameter(SourceTable, true, true, "vb") %>) As IDataReader
+            Return CType(SqlHelper.ExecuteReader(ConnectionString, GetFullyQualifiedName("<%= GetRawStoredProcName(ModuleName, SelectKeyword, ColumnName)%>"), <%= GetSelectByColumnNameParameter(SourceTable.NonPrimaryKeyColumns[i], false, true, "vb")%><%= GetModuleIdParameter(SourceTable, false, true, "vb") %>), IDataReader)
+        End Function
+
+<%
+	} // if
+} // for
+%>
+        Public Overrides Function <%= GetMethodName(ModuleName, ListKeyword, true) %>(<%= GetModuleIdParameter(SourceTable, true, false, "vb").Trim() %>) As IDataReader
+            Return CType(SqlHelper.ExecuteReader(ConnectionString, GetFullyQualifiedName("<%= GetRawStoredProcName(ModuleName, ListKeyword)%>")<%= GetModuleIdParameter(SourceTable, false, true, "vb") %>), IDataReader)
+        End Function
+
+        Public Overrides Function <%= GetMethodName(ModuleName, InsertKeyword) %>(<%= GetNonPrimaryKeyParameters(SourceTable, true, false, "vb").Trim() %>) As Integer
+            Return CType(SqlHelper.ExecuteScalar(ConnectionString, GetFullyQualifiedName("<%= GetRawStoredProcName(ModuleName, InsertKeyword) %>"), <%= GetNonPrimaryKeyParameters(SourceTable, false, true, "vb").Trim() %>), Integer)
+        End Function
+
+        Public Overrides Sub <%= GetMethodName(ModuleName, UpdateKeyword) %>(<%= GetPrimaryKeyParameters(SourceTable, true, "vb").Trim() %>, <%= GetNonPrimaryKeyParameters(SourceTable, true, false, "vb").Trim() %>)
+            SqlHelper.ExecuteNonQuery(ConnectionString, GetFullyQualifiedName("<%= GetRawStoredProcName(ModuleName, UpdateKeyword) %>"), <%= GetPrimaryKeyParameters(SourceTable, false, "vb") %>, <%= GetNonPrimaryKeyParameters(SourceTable, false, true, "vb").Trim() %>)
+        End Sub
+
+        Public Overrides Sub <%= GetMethodName(ModuleName, DeleteKeyword) %>(<%= GetPrimaryKeyParameters(SourceTable, true, "vb").Trim() %>)
+            SqlHelper.ExecuteNonQuery(ConnectionString, GetFullyQualifiedName("<%= GetRawStoredProcName(ModuleName, DeleteKeyword) %>"), <%= GetPrimaryKeyParameters(SourceTable, false, "vb") %>)
+        End Sub
+
+#End Region
+
+    End Class
+
+End Namespace
+
+<!-- #include file="%%DNN4%%CommonFunctions.cs" -->

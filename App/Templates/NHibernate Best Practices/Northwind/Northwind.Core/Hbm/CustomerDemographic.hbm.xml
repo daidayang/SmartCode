@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="Northwind.Core" namespace="Northwind.Core.Domain">
+    <class name="CustomerDemographic" table="CustomerDemographics" >
+    <id name="ID" type="System.String" column="CustomerTypeID">
+        <generator class="assigned"/>
+    </id>
+    <property name="CustomerDesc" column="CustomerDesc" type="System.String" not-null="false" />
+    <bag name="Customerses" table="CustomerCustomerDemo">
+        <key column="CustomerTypeID" />
+        <many-to-many class="Customer" column="CustomerID" />
+    </bag>
+ </class>
+</hibernate-mapping>

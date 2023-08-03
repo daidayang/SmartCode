@@ -1,0 +1,92 @@
+<%@ CodeTemplate Language="C#" TargetLanguage="XML" Description="Generates the DNN Module Definition file." %>
+<%@ Property Name="Namespace" Type="System.String" Default="YourCompany" Category="Style" Description="Used to generate the Namespace declaration." %>
+<%@ Property Name="SourceTable" Type="SmartCode.Model.Mapping.CS.TableSchema" Category="Context" Description="Table that the object is based on." %>
+<%@ Property Name="ModuleName" Type="System.String" Default="" Category="Style" Description="" %>
+<%@ Assembly Name="SmartCode.Model.Mapping" %>
+<%@ Import Namespace="SmartCode.Model.Mapping.CS" %>
+<%@ Import Namespace="System.Text.RegularExpressions" %>
+<%-- 
+	Rev 2007.03.03
+	For the latest version of this template, http://quiziqal.com/files/default.aspx		
+--%>
+<dotnetnuke version="3.0" type="Module">
+  <folders>
+    <folder>
+      <name><%= ModuleName %></name>
+      <friendlyname><%= ModuleName %></friendlyname>
+      <foldername><%= ModuleName %></foldername>
+      <modulename><%= ModuleName %></modulename>
+      <description>A <%= ModuleName %> module</description>
+      <version>01.00.00</version>
+      <businesscontrollerclass><%= Namespace %>.Modules.<%= ModuleName %>.<%= ModuleName %>Controller</businesscontrollerclass>
+      <modules>
+        <module>
+          <friendlyname><%= ModuleName %></friendlyname>
+          <cachetime>60</cachetime>
+          <controls>
+            <control>
+              <src>DesktopModules/<%= ModuleName %>/View<%= ModuleName %>.ascx</src>
+              <type>View</type>
+              <helpurl></helpurl>
+            </control>
+            <control>
+              <key>Settings</key>
+              <title><%= ModuleName %> Settings</title>
+              <src>DesktopModules/<%= ModuleName %>/Settings.ascx</src>
+              <type>Edit</type>
+              <helpurl></helpurl>
+            </control>
+          </controls>
+        </module>
+      </modules>
+      <files>
+        <file>
+          <name>View<%= ModuleName %>.ascx</name>
+        </file>
+        <file>
+          <name>View<%= ModuleName %>.ascx.vb</name>
+        </file>
+        <file>
+          <name>Settings.ascx</name>
+        </file>
+        <file>
+          <name>Settings.ascx.vb</name>
+        </file>
+        <file>
+          <path>App_LocalResources</path>
+          <name>View<%= ModuleName %>.ascx.resx</name>
+        </file>
+        <file>
+          <path>App_LocalResources</path>
+          <name>Settings.ascx.resx</name>
+        </file>
+        <file>
+          <path>[app_code]</path>
+          <name>DataProvider.vb</name>
+        </file>
+        <file>
+          <path>[app_code]</path>
+          <name><%= ModuleName %>Controller.vb</name>
+        </file>
+        <file>
+          <path>[app_code]</path>
+          <name><%= ModuleName %>Info.vb</name>
+        </file>
+        <file>
+          <path>[app_code]</path>
+          <name>SqlDataProvider.vb</name>
+        </file>
+        <file>
+          <path>SqlScripts</path>
+          <name>01.00.00.SqlDataProvider</name>
+        </file>
+        <file>
+          <path>SqlScripts</path>
+          <name>Uninstall.SqlDataProvider</name>
+        </file>
+      </files>
+    </folder>
+  </folders>
+</dotnetnuke>
+
+<!-- #include file="%%DNN4%%CommonFunctions.cs" -->

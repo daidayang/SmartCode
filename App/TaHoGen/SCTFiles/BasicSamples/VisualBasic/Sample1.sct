@@ -1,0 +1,12 @@
+<%@ CodeTemplate ClassName="Sample1" Namespace="Samples" Language="VB" TargetLanguage="VB"%>
+<%@ Property Name="CurrentDomain" Type="SmartCode.Model.Domain" Category="Context" Description="The Domain to use for this sample." %>
+<%@ Assembly Src="/TaHoGen101/Helper.cs" %> 
+<%@ Assembly Name="SmartCode.Model" %>
+<%@ Import Namespace="SmartCode.Model" %>
+
+Public Enum <%= Helper.PascalCase(CurrentDomain.Code) %>Tables
+<% For Each table As TableSchema In CurrentDomain.DatabaseSchema.GetAllTables()  %>
+	<%= Helper.PascalCase(table.Code) %>
+<% Next %>
+End Enum
+

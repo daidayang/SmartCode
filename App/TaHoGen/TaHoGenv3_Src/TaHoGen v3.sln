@@ -1,0 +1,29 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaHoGen v3", "TaHoGen v3.csproj", "{71FFDDDC-92CB-49B4-B441-D809DEEA00ED}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpSample", "..\TaHoGen_Sample\CSharpSample\CSharpSample.csproj", "{D3D2C60F-E2C4-47A7-A5BE-12DB1A6391ED}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{71FFDDDC-92CB-49B4-B441-D809DEEA00ED}.Debug.ActiveCfg = Debug|.NET
+		{71FFDDDC-92CB-49B4-B441-D809DEEA00ED}.Debug.Build.0 = Debug|.NET
+		{71FFDDDC-92CB-49B4-B441-D809DEEA00ED}.Release.ActiveCfg = Release|.NET
+		{71FFDDDC-92CB-49B4-B441-D809DEEA00ED}.Release.Build.0 = Release|.NET
+		{D3D2C60F-E2C4-47A7-A5BE-12DB1A6391ED}.Debug.ActiveCfg = Debug|.NET
+		{D3D2C60F-E2C4-47A7-A5BE-12DB1A6391ED}.Debug.Build.0 = Debug|.NET
+		{D3D2C60F-E2C4-47A7-A5BE-12DB1A6391ED}.Release.ActiveCfg = Release|.NET
+		{D3D2C60F-E2C4-47A7-A5BE-12DB1A6391ED}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

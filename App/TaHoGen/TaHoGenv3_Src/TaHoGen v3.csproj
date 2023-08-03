@@ -1,0 +1,340 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{71FFDDDC-92CB-49B4-B441-D809DEEA00ED}</ProjectGuid>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ApplicationIcon>
+    </ApplicationIcon>
+    <AssemblyKeyContainerName>
+    </AssemblyKeyContainerName>
+    <AssemblyName>TaHoGen.Core</AssemblyName>
+    <AssemblyOriginatorKeyFile>SmartCode.snk</AssemblyOriginatorKeyFile>
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>Library</OutputType>
+    <RootNamespace>TaHoGen</RootNamespace>
+    <RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
+    <StartupObject>
+    </StartupObject>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <SignAssembly>true</SignAssembly>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>CACHING_ENABLED;REGIONS_ENABLED</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>CACHING_ENABLED</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>false</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>none</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EnvDTE">
+      <Name>envdte</Name>
+    </Reference>
+    <Reference Include="Interop.CodeSmithParser">
+      <Name>Interop.CodeSmithParser</Name>
+      <HintPath>..\Bin\Interop.CodeSmithParser.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.RegionParser">
+      <Name>Interop.RegionParser</Name>
+      <HintPath>..\Bin\Interop.RegionParser.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.JScript">
+      <Name>Microsoft.JScript</Name>
+    </Reference>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Name>System.Drawing</Name>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Name>System.Windows.Forms</Name>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CachedParser.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CodeDom\AttributeBuilder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CodeDom\Class.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CodeDom\CodeGenerator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CodeDom\ExpressionBuilder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CodeDom\LiteralCodeBuilder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CodeDom\LiteralTextBuilder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CodeDom\Method.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CodeDom\Namespace.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CodeDom\Parameter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CodeDom\Property.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Collections\stringtable.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Collections\tokencollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Compilers\AssemblyCompiler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Compilers\TemplateCompiler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="exceptions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generators\TextGenerator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="interfaces.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ParserFactory.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Parsers\parser.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Parsers\RegionParser.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\PropertyBag.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\PropertyHelper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\PropertyMimic.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\ReflectionHelper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StringHelper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Targets\ClipboardTarget.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Targets\ConsoleTarget.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Targets\DebugTarget.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Targets\DebugWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Targets\FileTarget.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Targets\MergeTarget.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Targets\OutputTarget.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Targets\StreamTarget.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Targets\StringTarget.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Targets\TraceTarget.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Targets\TraceWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Targets\VisualStudioOutputPaneWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Tokens\Code.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Tokens\Comment.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Tokens\Directive.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Tokens\Expression.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Tokens\Include.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Tokens\NonRegion.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Tokens\Region.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Tokens\ScriptBlock.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Tokens\Text.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Tokens\Token.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="visitor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\SmartCode.Model.Mapping\SmartCode.Model.Mapping.csproj">
+      <Project>{1EDAFBDC-96BE-48FA-8499-95272959CB9E}</Project>
+      <Name>SmartCode.Model.Mapping</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SmartCode.Model\SmartCode.Model.csproj">
+      <Project>{4DC59315-087C-4EFC-B8F5-B89097E18A94}</Project>
+      <Name>SmartCode.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SmartCode.Template\SmartCode.Template.csproj">
+      <Project>{D4099BA2-B61C-4DD4-A2A6-DFC41229FF32}</Project>
+      <Name>SmartCode.Template</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SmartCode.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Design\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>rem "C:\Program Files\Microsoft Visual Studio .NET 2003\SDK\v1.1\Bin\gacutil.exe" /i "C:\Documents and Settings\Development\My Documents\Visual Studio Projects\C#\TaHoGen v3\bin\Release\tahogen.core.dll"</PostBuildEvent>
+  </PropertyGroup>
+</Project>

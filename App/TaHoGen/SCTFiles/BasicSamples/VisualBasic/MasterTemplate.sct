@@ -1,0 +1,10 @@
+<%-- 
+Name: MasterTemplate1.sct
+Description: Demonstrates the use of a sub-template.
+--%>
+<%@ CodeTemplate Namespace="Samples" ClassName="MasterTemplate" Language="CS" TargetLanguage="CS"%>
+<%@ Compile Template="/BasicSamples/VisualBasic/SubTemplate.sct" outputfilename="MyExternalAssembly.dll" %>
+<%@ Import Namespace="MyTemplateNamespace"%>
+
+My master template content here.
+<% new SubTemplate().Generate(writer); %>

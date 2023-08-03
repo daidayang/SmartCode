@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema id="OrdersDS" targetNamespace="http://tempuri.org/OrdersDS.xsd" elementFormDefault="qualified"
+	attributeFormDefault="qualified" xmlns="http://tempuri.org/OrdersDS.xsd" xmlns:mstns="http://tempuri.org/OrdersDS.xsd"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" >
+	<xs:element name="OrdersDS" msdata:IsDataSet="true">
+		<xs:complexType>
+			<xs:choice maxOccurs="unbounded">
+				<xs:element name="Orders">
+					<xs:complexType>
+						<xs:sequence>
+				<xs:element name="OrderID" msdata:AutoIncrement="true" type="xs:int" />
+				<xs:element name="CustomerID" type="xs:string"/>
+				<xs:element name="EmployeeID" type="xs:int"/>
+				<xs:element name="OrderDate" type="xs:dateTime"/>
+				<xs:element name="RequiredDate" type="xs:dateTime"/>
+				<xs:element name="ShippedDate" type="xs:dateTime"/>
+				<xs:element name="ShipVia" type="xs:int"/>
+				<xs:element name="Freight" type="xs:decimal"/>
+				<xs:element name="ShipName" type="xs:string"/>
+				<xs:element name="ShipAddress" type="xs:string"/>
+				<xs:element name="ShipCity" type="xs:string"/>
+				<xs:element name="ShipRegion" type="xs:string"/>
+				<xs:element name="ShipPostalCode" type="xs:string"/>
+				<xs:element name="ShipCountry" type="xs:string"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:choice>
+		</xs:complexType>
+		<xs:unique name="OrdersPK" msdata:PrimaryKey="true">
+			<xs:selector xpath=".//mstns:Orders" />
+			<xs:field xpath="mstns:OrderID" />
+		</xs:unique>
+	</xs:element>
+</xs:schema>

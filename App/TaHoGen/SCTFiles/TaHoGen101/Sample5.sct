@@ -1,0 +1,19 @@
+﻿<%@ CodeTemplate Language="C#" TargetLanguage="Text"  %>
+<%@ Property Name="SourceTable" Type="SmartCode.Model.TableSchema" Category="Context" Description="The table to use for this sample." %>
+<%@ Property Name="CurrentDomain" Type="SmartCode.Model.Domain" Category="Context" Description="The Domain to use for this sample." %>
+<%@ Assembly Name="SmartCode.Model" %>
+<%@ Import Namespace="SmartCode.Model" %>
+<%-- 
+This template demonstrates using properties defined in external assemblies.
+--%>
+
+This is some static content (just like the static HTML in a ASP page).
+
+<%= "The current Domain name is: " + CurrentDomain.Name %>
+
+<%= "Table: " + this.SourceTable.Name %>
+<% foreach (ColumnSchema column in this.SourceTable.Columns()) { %>
+	<%= column.Name %>
+<% } %>
+
+This is more static content.

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema id="EmployeesDS" targetNamespace="http://tempuri.org/EmployeesDS.xsd" elementFormDefault="qualified"
+	attributeFormDefault="qualified" xmlns="http://tempuri.org/EmployeesDS.xsd" xmlns:mstns="http://tempuri.org/EmployeesDS.xsd"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" >
+  <xs:element name="EmployeesDS" msdata:IsDataSet="true">
+    <xs:complexType>
+      <xs:choice maxOccurs="unbounded">
+        <xs:element name="Employees">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="EmployeeID" msdata:AutoIncrement="true" type="xs:int" />
+              <xs:element name="LastName" type="xs:string"  minOccurs="0" msprop:nullValue="_null"/>
+              <xs:element name="FirstName" type="xs:string"  minOccurs="0" msprop:nullValue="_null"/>
+              <xs:element name="Title" type="xs:string"/>
+              <xs:element name="TitleOfCourtesy" type="xs:string"/>
+              <xs:element name="BirthDate" type="xs:dateTime"/>
+              <xs:element name="HireDate" type="xs:dateTime"/>
+              <xs:element name="Address" type="xs:string"/>
+              <xs:element name="City" type="xs:string"/>
+              <xs:element name="Region" type="xs:string"/>
+              <xs:element name="PostalCode" type="xs:string"/>
+              <xs:element name="Country" type="xs:string"/>
+              <xs:element name="HomePhone" type="xs:string"/>
+              <xs:element name="Extension" type="xs:string"/>
+              <xs:element name="Photo" type="xs:base64Binary"/>
+              <xs:element name="Notes" type="xs:string"/>
+              <xs:element name="ReportsTo" type="xs:int"/>
+              <xs:element name="ReportsTo_LastName" type="xs:string"  minOccurs="0" msprop:nullValue="_null"/>
+              <xs:element name="ReportsTo_FirstName" type="xs:string"  minOccurs="0" msprop:nullValue="_null"/>
+              <xs:element name="PhotoPath" type="xs:string"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="EmployeesPK" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Employees" />
+      <xs:field xpath="mstns:EmployeeID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,117 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{860E9BF5-ECA0-403C-92B2-D8DDB696BB1B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Domain</RootNamespace>
+    <AssemblyName>Northwind.Core</AssemblyName>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataInterfaces\ICategoryDao.cs" />
+    <Compile Include="DataInterfaces\ICustomerCustomerDemoDao.cs" />
+    <Compile Include="DataInterfaces\ICustomerDao.cs" />
+    <Compile Include="DataInterfaces\ICustomerDemographicDao.cs" />
+    <Compile Include="DataInterfaces\IDao.cs" />
+    <Compile Include="DataInterfaces\IDaoFactory.cs" />
+    <Compile Include="DataInterfaces\IEmployeeDao.cs" />
+    <Compile Include="DataInterfaces\IEmployeeTerritoryDao.cs" />
+    <Compile Include="DataInterfaces\IOrderDao.cs" />
+    <Compile Include="DataInterfaces\IOrderDetailDao.cs" />
+    <Compile Include="DataInterfaces\IProductDao.cs" />
+    <Compile Include="DataInterfaces\IRegionDao.cs" />
+    <Compile Include="DataInterfaces\IShipperDao.cs" />
+    <Compile Include="DataInterfaces\ISupplierDao.cs" />
+    <Compile Include="DataInterfaces\ITerritoryDao.cs" />
+    <Compile Include="Domain\Category.cs" />
+    <Compile Include="Domain\Customer.cs" />
+    <Compile Include="Domain\CustomerCustomerDemo.cs" />
+    <Compile Include="Domain\CustomerDemographic.cs" />
+    <Compile Include="Domain\DomainObject.cs" />
+    <Compile Include="Domain\Employee.cs" />
+    <Compile Include="Domain\EmployeeTerritory.cs" />
+    <Compile Include="Domain\Order.cs" />
+    <Compile Include="Domain\OrderDetail.cs" />
+    <Compile Include="Domain\Product.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Domain\Region.cs" />
+    <Compile Include="Domain\Shipper.cs" />
+    <Compile Include="Domain\Supplier.cs" />
+    <Compile Include="Domain\Territory.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Hbm\Category.hbm.xml" />
+    <EmbeddedResource Include="Hbm\Customer.hbm.xml" />
+    <EmbeddedResource Include="Hbm\CustomerCustomerDemo.hbm.xml" />
+    <EmbeddedResource Include="Hbm\CustomerDemographic.hbm.xml" />
+    <EmbeddedResource Include="Hbm\Employee.hbm.xml" />
+    <EmbeddedResource Include="Hbm\EmployeeTerritory.hbm.xml" />
+    <EmbeddedResource Include="Hbm\Order.hbm.xml" />
+    <EmbeddedResource Include="Hbm\OrderDetail.hbm.xml" />
+    <EmbeddedResource Include="Hbm\Product.hbm.xml" />
+    <EmbeddedResource Include="Hbm\Region.hbm.xml" />
+    <EmbeddedResource Include="Hbm\Shipper.hbm.xml" />
+    <EmbeddedResource Include="Hbm\Supplier.hbm.xml" />
+    <EmbeddedResource Include="Hbm\Territory.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="nhibernate-mapping.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="nhibernate-mapping.xsx">
+      <DependentUpon>nhibernate-mapping.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ProjectBase.Utils\ProjectBase.Utils.csproj">
+      <Project>{24D21FC0-59B8-4208-AA1D-1B30D3F3C101}</Project>
+      <Name>ProjectBase.Utils</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

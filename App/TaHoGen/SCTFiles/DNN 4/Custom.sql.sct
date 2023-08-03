@@ -1,0 +1,5 @@
+<%@ CodeTemplate Language="C#" TargetLanguage="VB.NET" Description="Generates a blank file for holding custom SQL statements." %>
+<%-- 
+	Rev 2007.03.03
+	For the latest version of this template, http://quiziqal.com/files/default.aspx		
+--%>

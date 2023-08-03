@@ -1,0 +1,111 @@
+<%@ CodeTemplate Language="C#" TargetLanguage="VB.NET" Description="Generates the View[ModuleName].ascx web control." %>
+<%@ Property Name="Namespace" Type="System.String" Default="YourCompany" Category="Style" Description="Used to generate the Namespace declaration." %>
+<%@ Property Name="SourceTable" Type="SmartCode.Model.Mapping.CS.TableSchema" Category="Context" Description="Table that the object is based on." %>
+<%@ Property Name="InsertKeyword" Type="System.String" Default="Add" Category="Style" Description="Suffix to use for all generated INSERT stored procedures." %>
+<%@ Property Name="UpdateKeyword" Type="System.String" Default="Update" Category="Style" Description="Suffix to use for all generated UPDATE stored procedures." %>
+<%@ Property Name="DeleteKeyword" Type="System.String" Default="Delete" Category="Style" Description="Suffix to use for all generated DELETE stored procedures." %>
+<%@ Property Name="ListKeyword" Type="System.String" Default="GetAll" Category="Style" Description="Suffix to use for all generated SELECT stored procedures." %>
+<%@ Property Name="ModuleName" Type="System.String" Default="" Category="Style" Description="" %>
+<%@ Assembly Name="SmartCode.Model.Mapping" %>
+<%@ Import Namespace="SmartCode.Model.Mapping.CS" %>
+<%@ Import Namespace="System.Text.RegularExpressions" %>
+<%-- 
+	Rev 2007.03.03
+	For the latest version of this template, http://quiziqal.com/files/default.aspx		
+--%>
+<%
+string ColumnName = "";
+%>
+<%%@ Control Language="VB" AutoEventWireup="false" CodeFile="View<%=ModuleName%>.ascx.vb" Inherits="<%=Namespace%>.Modules.<%=ModuleName%>.View<%=ModuleName%>" %>
+<%%@ Register Assembly="DotNetNuke.WebUtility" Namespace="DotNetNuke.UI.Utilities" TagPrefix="cc1" %>
+<%%@ Register TagPrefix="dnn" TagName="Audit" Src="~/controls/ModuleAuditControl.ascx" %>
+<asp:GridView ID="GridView1" runat="server" 
+    AllowPaging="True" AutoGenerateColumns="False"
+    DataKeyNames="<%=GetPrimaryKeyParameters(SourceTable, false, "vb")%><%= GetModuleIdParameter(SourceTable, false, true, "vb") %>"
+    DataSourceID="<%=ModuleName%>DataSource"
+    EnableViewState="False">
+    <Columns>
+        <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
+<% 	for(int i = 0; i < SourceTable.Columns.Count; i++)
+	{
+		ColumnName = SourceTable.Columns[i].Name;
+		if(!SourceTable.Columns[i].IsPrimaryKeyMember && ColumnName.ToLower() != "moduleid")
+		{
+%>
+        <asp:BoundField DataField="<%=ColumnName%>" HeaderText="<%=ColumnName%>" SortExpression="<%=ColumnName%>" Visible="True" />
+<%
+		}
+	}
+%>
+    </Columns>
+    <EmptyDataTemplate>
+        There are no <%=ModuleName%> Records
+    </EmptyDataTemplate>
+</asp:GridView>
+<br />
+<asp:LinkButton ID="AddItemButton" runat="server" EnableViewState="False">Add <%=ModuleName%></asp:LinkButton>
+<br /><br />
+<asp:FormView ID="FormView1" runat="server" 
+	DataKeyNames="<%=GetPrimaryKeyParameters(SourceTable, false, "vb")%>" 
+	DataSourceID="<%=ModuleName%>DataSource"
+    DefaultMode="Insert" Visible="False">
+    <EditItemTemplate>
+    </EditItemTemplate>
+    <InsertItemTemplate>
+<% 	for(int i = 0; i < SourceTable.Columns.Count; i++)
+	{
+		ColumnName = SourceTable.Columns[i].Name;
+		
+		if(ColumnName.ToLower() == "moduleid")
+		{
+%>   
+			<asp:TextBox ID="<%=ColumnName%>" runat="server" Text='<%%# Bind("<%=ColumnName%>") %>' Visible="False"></asp:TextBox>
+<%
+		}		
+		else if(!SourceTable.Columns[i].IsPrimaryKeyMember)
+		{
+%>
+        <p>
+            <asp:Label ID="lbl<%=ColumnName%>" runat="server" Text="<%=ColumnName%>"></asp:Label> 
+            <asp:TextBox ID="<%=ColumnName%>" runat="server" Text='<%%# Bind("<%=ColumnName%>") %>' EnableViewState="False"></asp:TextBox>
+        </p>
+<%
+		}
+	}
+%>        
+         <p>
+             <asp:LinkButton ID="InsertItemButton" runat="server" 
+                 CausesValidation="True" CommandName="Insert"
+                 Text="Insert" OnClick="InsertItemButton_Click">
+             </asp:LinkButton>&nbsp;
+             <asp:LinkButton ID="InsertCancelButton" runat="server" 
+                 CausesValidation="False" CommandName="Cancel"
+                 Text="Cancel" OnClick="InsertCancelButton_Click">
+             </asp:LinkButton>
+         </p>
+     </InsertItemTemplate>
+     <ItemTemplate>
+     </ItemTemplate>
+</asp:FormView>
+<asp:ObjectDataSource ID="<%=ModuleName%>DataSource" runat="server" 
+    DataObjectTypeName="<%=Namespace%>.Modules.<%=ModuleName%>.<%=ModuleName%>Info"
+    DeleteMethod="<%= GetMethodName(ModuleName, DeleteKeyword) %>" 
+    InsertMethod="<%= GetMethodName(ModuleName, InsertKeyword) %>" 
+    OldValuesParameterFormatString="original_{0}"
+    SelectMethod="<%= GetMethodName(ModuleName, ListKeyword, true) %>" 
+    TypeName="<%=Namespace%>.Modules.<%=ModuleName%>.<%=ModuleName%>Controller"
+    UpdateMethod="<%= GetMethodName(ModuleName, UpdateKeyword) %>">
+<%
+if(SourceTable.Columns.Contains("moduleId"))
+{
+%>
+    <SelectParameters>
+        <asp:Parameter DefaultValue="00" Name="ModuleId" Type="Int32" />
+    </SelectParameters>
+<%
+}
+%>
+</asp:ObjectDataSource>
+<br />
+
+<!-- #include file="%%DNN4%%CommonFunctions.cs" -->

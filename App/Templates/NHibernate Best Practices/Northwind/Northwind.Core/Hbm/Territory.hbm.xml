@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="Northwind.Core" namespace="Northwind.Core.Domain">
+    <class name="Territory" table="Territories" >
+    <id name="ID" type="System.String" column="TerritoryID">
+        <generator class="assigned"/>
+    </id>
+    <property name="TerritoryDescription" column="TerritoryDescription" type="System.String" not-null="true" length="50"/>
+    <property name="RegionID" column="RegionID" type="System.Int32" not-null="true" />
+    <many-to-one name="RegionIDRegion" column="RegionID" class="Region"  update="0"  insert="0" />
+    <bag name="Employeeses" table="EmployeeTerritories">
+        <key column="TerritoryID" />
+        <many-to-many class="Employee" column="EmployeeID" />
+    </bag>
+ </class>
+</hibernate-mapping>
