@@ -92,6 +92,7 @@ namespace SmartCode.Studio
                             projColumn.IsRequired != dbColumn.IsRequired ||
                             projColumn.NetDataType != dbColumn.NetDataType ||
                             projColumn.SqlType != dbColumn.SqlType ||
+                            projColumn.Length != dbColumn.Length ||
                             projColumn.Scale != dbColumn.Scale )
                         {
                             XPListViewItem li = new XPListViewItem(new string[] { "Column", dbTable.Name, dbColumn.Name, "Update" });
@@ -152,6 +153,7 @@ namespace SmartCode.Studio
                             projectColumn.IsRequired = dbColumn.IsRequired ;
                             projectColumn.NetDataType = dbColumn.NetDataType;
                             projectColumn.SqlType = dbColumn.SqlType ;
+                            projectColumn.Length = dbColumn.Length;
                             projectColumn.Scale = dbColumn.Scale;
                         }
 

@@ -109,6 +109,7 @@ namespace SmartCode.Studio.Database
                     sqlTypes.Add("fallback for a nonexistent type", SqlType.Unknown);
                     break;
                 case "mysql":
+                    sqlTypes.Add("BIT", SqlType.Boolean);
                     sqlTypes.Add("BOOL", SqlType.Boolean);
                     sqlTypes.Add("BOOLEAN", SqlType.Boolean);
                     sqlTypes.Add("CHAR", SqlType.AnsiChar);
@@ -131,10 +132,9 @@ namespace SmartCode.Studio.Database
                     sqlTypes.Add("FLOAT", SqlType.Float);
                     sqlTypes.Add("smalldatetime", SqlType.SmallDateTime);
                     sqlTypes.Add("TINYINT", SqlType.Byte);
-                    sqlTypes.Add("BIT", SqlType.UInt16);
-                    sqlTypes.Add("SMALLINT", SqlType.UInt16);
-                    sqlTypes.Add("MEDIUMINT", SqlType.UInt32);
-                    sqlTypes.Add("INT", SqlType.UInt32);
+                    sqlTypes.Add("SMALLINT", SqlType.Int16);
+                    sqlTypes.Add("MEDIUMINT", SqlType.Int32);
+                    sqlTypes.Add("INT", SqlType.Int32);
                     sqlTypes.Add("INTEGER", SqlType.Int32);
                     sqlTypes.Add("BIGINT", SqlType.Int64);
                     sqlTypes.Add("unknown", SqlType.Unknown);

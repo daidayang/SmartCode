@@ -55,16 +55,20 @@ namespace SmartCode.Studio.Database.MySQL
 
             MySqlCommand cmd = new MySqlCommand(commandText, cnn);
 
+            List<string> lstTables = new List<string>();
+
             using (IDataReader reader = cmd.ExecuteReader())
             {
                 while (reader.Read())
                 {
-                    allTables.Add(reader.GetString(0));
+                    lstTables.Add(reader.GetString(0));
+                    //allTables.Add(reader.GetString(0));
                 }
             }
 
-
-            return (string[])allTables.ToArray(typeof(string));
+            lstTables.Sort();
+            return lstTables.ToArray();
+            //return (string[])allTables.ToArray(typeof(string));
         }
 
         public override string[] GetAllViews()
@@ -170,7 +174,7 @@ namespace SmartCode.Studio.Database.MySQL
 
 
             string commandText = @"SELECT table_catalog,table_schema,table_name,column_name
-                    ,is_nullable,data_type,extra,column_type,column_key FROM information_schema.`COLUMNS`
+                    ,is_nullable,data_type,extra,column_type,column_key,CHARACTER_MAXIMUM_LENGTH,NUMERIC_PRECISION,NUMERIC_SCALE FROM information_schema.`COLUMNS`
                      WHERE table_schema=" + '"' + Driver.DatabaseSchema.ConnectionInfo.Database + '"';
 
 
@@ -184,6 +188,12 @@ namespace SmartCode.Studio.Database.MySQL
                 while (reader.Read())
                 {
                     string tableName = (string)reader["TABLE_NAME"];
+                    if ( tableName == "rtgBillingInfo")
+                    {
+                        int a = 1;
+                        a = a + 2;
+                    }
+
                     IList curTableList = allColumns[tableName] as IList;
                     if (curTableList == null)
                     {
@@ -196,6 +206,7 @@ namespace SmartCode.Studio.Database.MySQL
 
                     // SqlType detection
                     string dataType = (string)reader["DATA_TYPE"];
+                    dataType = dataType.ToUpper();
 
                     newColumn.OriginalSQLType = dataType;
 
@@ -225,13 +236,13 @@ namespace SmartCode.Studio.Database.MySQL
                       (newColumn.SqlType == SqlType.Binary) ||
                       (newColumn.SqlType == SqlType.VarBinary))
                     {
-                        newColumn.Size = (int)reader["CHARACTER_MAXIMUM_LENGTH"];
+                        newColumn.Size = Convert.ToInt32((UInt64)reader["CHARACTER_MAXIMUM_LENGTH"]);
                     }
                     else if (newColumn.SqlType == SqlType.Decimal)
                     {
                         //newColumn.Size = (byte)reader["NUMERIC_PRECISION"];    //[Changed by Fredy Muñoz] The Size field was set with the Precision value because there wasn't a Precision field to use.
-                        newColumn.Precision = (byte)reader["NUMERIC_PRECISION"];    //[Added by Fredy Muñoz] 
-                        newColumn.Scale = (int)reader["NUMERIC_SCALE"];
+                        newColumn.Precision = Convert.ToInt32((UInt64)reader["NUMERIC_PRECISION"]);    //[Added by Fredy Muñoz] 
+                        newColumn.Scale = Convert.ToInt32((UInt64)reader["NUMERIC_SCALE"]);
                     }
 
                     if (newColumn.Size == -1)
