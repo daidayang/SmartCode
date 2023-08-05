@@ -206,13 +206,13 @@ namespace SmartCode.Studio.Database.MySQL
 
                     // SqlType detection
                     string dataType = (string)reader["DATA_TYPE"];
-                    dataType = dataType.ToUpper();
+                    //dataType = dataType.ToUpper();
 
                     newColumn.OriginalSQLType = dataType;
 
-                    if (sqlTypes.ContainsKey(dataType))
+                    if (sqlTypes.ContainsKey(dataType.ToUpper()))
                     {
-                        newColumn.SqlType = (SqlType)sqlTypes[dataType];
+                        newColumn.SqlType = (SqlType)sqlTypes[dataType.ToUpper()];
                     }
                     else
                     {
