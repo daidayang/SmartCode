@@ -188,7 +188,7 @@ namespace SmartCode.Studio.Database.MySQL
                 while (reader.Read())
                 {
                     string tableName = (string)reader["TABLE_NAME"];
-                    if ( tableName == "rtgBillingInfo")
+                    if (tableName == "rtgBillingInfo")
                     {
                         int a = 1;
                         a = a + 2;
@@ -273,12 +273,12 @@ namespace SmartCode.Studio.Database.MySQL
                     }
 
                     //[Changed by Julio C. Aragon] 
-                    /* if (reader["extra"] != DBNull.Value)
-                      {
-                          string s = (string)reader["extra"];
-                          newColumn.DefaultValue = s;
-                      } 
-                      newColumn.AutoIncrement = (int)reader["IS_IDENTITY"] == 1; */
+                    //if (reader["extra"] != DBNull.Value)
+                    //{
+                    //    string s = (string)reader["extra"];
+                    //    newColumn.DefaultValue = s;
+                    //}
+                    newColumn.AutoIncrement = string.CompareOrdinal((string)reader["extra"], "auto_increment") == 0;
 
                     curTableList.Add(newColumn);
                 }
